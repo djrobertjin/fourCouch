@@ -1,0 +1,40 @@
+<html>
+<head></head>
+<body> 
+<div id="enterRoomDiv"> 
+<!-- Limit str length for input V -->
+Player Name: <input id="playerName" type="text"></input>
+Room ID: <input id="roomID" type="text"></input>
+<button id="enterRoomButton">Enter Room</button>
+<p></p>
+<button id="createNewRoomButton">Create New Room</button>
+</div>
+
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<script>
+var socket = io();
+
+var roomID = document.getElementById('roomID');
+var playerName = document.getElementById('playerName');
+var enterRoomButton = document.getElementById('enterRoomButton')
+var newRoomButton = document.getElementById('createNewRoomButton')
+
+newRoomButton.onclick = function(){
+	socket.emit('createNewRoom', {name: playerName.value});
+	console.log("Creating new Room..")
+}
+
+enterRoomButton.onclick = function(){
+	socket.emit('enterRoom', {name: playerName.value, rID: roomID.value});
+	console.log("Entering room..");
+}
+
+
+
+
+
+</script>
+
+</body>
+</html>
