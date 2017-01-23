@@ -10,9 +10,18 @@ Room ID: <input id="roomID" type="text"></input>
 <button id="createNewRoomButton">Create New Room</button>
 </div>
 
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<div id="GameInfo">
+<ul>
+<li id="roomIDinfo">RoomID:</li>
+<li id="playerinfo">Players:</li>
+</ul>
+</div>
 
-<script>
+<!-- <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="./client/js/main.js"></script>
+
+<!-- <script>
 var socket = io();
 
 var roomID = document.getElementById('roomID');
@@ -30,11 +39,16 @@ enterRoomButton.onclick = function(){
 	console.log("Entering room..");
 }
 
+socket.on('newRoomResponse', function(data){
+	console.log(data);
+});
 
 
 
 
-</script>
+
+
+</script> -->
 
 </body>
 </html>
