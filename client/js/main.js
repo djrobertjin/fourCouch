@@ -13,14 +13,16 @@ newRoomButton.onclick = function(){
 }
 
 enterRoomButton.onclick = function(){
-	socket.emit('enterRoom', {name: playerName.value, rID: roomID.value});
+	socket.emit('enterRoom', {name: playerName.value, roomID: roomID.value});
+	//socket.emit('enterRoom', roomID.value)
 	console.log("Entering room..");
 
 }
 
-socket.on('RoomResponse', function(gameObj){
-	console.log(gameObj);
-	update(gameObj);
+socket.on('RoomResponse', function(data){
+	console.log(data.roomID);
+	document.getElementById('roomIDinfo').innerHTML = data.roomID;
+	document.getElementById('playerinfo').innerHTML
 });
 
 
